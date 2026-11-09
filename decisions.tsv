@@ -1,0 +1,16 @@
+ts	phase	decision	why	evidence	result
+2026-11-09T16:40:00Z	reference	Copy source at tag 0.8.0 with exact audio bytes	User requested original sounds and interface	docs/reference/README.md	Original files copied and hashes checked
+2026-11-09T16:41:00Z	instructions	Adopt mgamergo AGENTS with user exceptions	User steering overrides web defaults and interactive grilling	AGENTS.md	Committed e8de0dd
+2026-11-09T16:44:00Z	architecture	Keep one repository writer and service-owned ExoPlayers	Domain state should stay consistent across UI and media controls	docs/architecture.md	Implemented; domain and persistence tests passed
+2026-11-09T16:53:00Z	visual	Fix SVG scaling after inspecting native screenshots	Icons rendered too small despite correct copied bytes	app/src/main/java/org/blanket/android/ui/Controls.kt	Rerender pending
+2026-11-09T16:55:00Z	verification	Use explicit dialog sizing to avoid Robolectric text-field layout oscillation	Upstream Robolectric issue 8460 matches width-qualified Dialog failure	https://github.com/robolectric/robolectric/issues/8460	Retest pending
+2026-11-09T17:05:00Z	verification	Replace test-manifest activity with a test-owned Robolectric activity	Host Compose tests need to run for debug and release without shipping a test activity	app/src/test/java/org/blanket/android/BlanketUiTest.kt	Retest pending
+2026-11-09T17:06:00Z	playback	Remove foreground notification after denied audio focus	A rejected background play request must not leave a foreground service running	app/src/test/java/org/blanket/android/PlaybackServiceTest.kt	Regression test added
+2026-11-09T17:13:00Z	verification	Prove screenshot verification detects a missing baseline	Passing render tests alone would not prove regression checks are active	app/build/outputs/roborazzi/main-light-520_actual.png	Expected failure observed; original restored and full suite passed
+2026-11-09T17:14:00Z	artifact	Verify debug signature and all packaged audio hashes	The APK is the artifact the user will sideload	scripts/verify-assets.sh	Signature valid and 14 original recordings match
+2026-11-09T17:29:33Z	review	Accept and fix both Sol findings	Unmute controls and nonblocking persistence are intended behavior	docs/sol-loop.md	Focused before/after regressions passed
+2026-11-09T17:29:33Z	integration	Exercise the real activity and picker callback	Isolated screens and adapters do not prove their wiring	app/src/test/java/org/blanket/android/MainActivityIntegrationTest.kt	Passed
+2026-11-09T17:37:43Z	verification	Close the earlier visual and test-harness checkpoints	Native renders and both variants now pass after the fixes	docs/verification.md	80 tests passed; no failures or skips
+2026-11-09T17:37:43Z	review	Accept round-2 approval and close S1/S2	Reviewer confirmed both fixes and found no new issue in the delta	docs/sol-loop.md	APPROVE; two-round loop converged
+2026-11-09T17:42:12Z	delivery	Commit assets and the verified native app locally	User requested logical local commits and no remote operations	f8d8d73	Assets 958804a; implementation f8d8d73; no push
+2026-11-09T17:42:12Z	cleanup	Stop task-owned Gradle processes	Leave no test-owned background services after handoff	docs/verification.md	Gradle reports no daemons; no preview server started
