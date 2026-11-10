@@ -1,11 +1,17 @@
 # Logbook
 
+## 2026-11-10 · Public project documentation
+
+- Published the existing code to mgamergo/blanket-android on public branch main at the user's request. This supersedes the original local-only delivery rule.
+- Reworked README for public users and contributors: features, screenshots, usage, portable build/install steps, development commands, and licensing. Moved the phone checklist to docs/verification.md alongside test evidence and environment limits.
+- Verified README paths, shell examples, Gradle tasks with --dry-run, asset checksums, and whitespace. Documentation only; application code and test baselines unchanged.
+
 ## 2026-11-09 · Completed
 - Native port built. Formatting, lint, 40 debug + 40 release tests, screenshot verification and assembleDebug pass. No failing or skipped tests. A missing-snapshot negative control failed as expected and was restored.
 - Sol-loop converged in two rounds with GPT-6.1 Sol at high effort. Fixed notification controls lost on unmute and DataStore writes on the UI thread. Both regressions fail before and pass after; round 2 approved with no new findings.
 - Debug APK: app/build/outputs/apk/debug/app-debug.apk. Signature, 16 KiB alignment, and all 14 original packaged recordings verified. SHA-256 and detailed evidence are in docs/verification.md.
 - Local commits: e8de0dd adopted AGENTS; 958804a imported original assets/licenses; f8d8d73 implemented the app and tests. Final documentation is committed separately. No remote or push. Task-owned Gradle processes are stopped; no preview server was started.
-- Next for the user: sideload and run the README phone checklist. No emulator/device was available; acoustic seams, decoder capacity, OEM background limits, real lockscreen/focus and document grants remain phone checks.
+- Next for the user: sideload and run the phone checklist in docs/verification.md. No emulator/device was available; acoustic seams, decoder capacity, OEM background limits, real lockscreen/focus and document grants remain phone checks.
 
 ## Decisions
 - Project AGENTS.md comes from mgamergo/skills revision 4850ac433888dcd9b0e0526c6c0a7fd61f7e60f5. User exceptions govern native stack, own dirty tree, no fetch/rebase without a remote, autonomous grill answers and test-only verification.

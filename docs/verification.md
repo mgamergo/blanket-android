@@ -30,9 +30,18 @@ The real-service test logs that Robolectric has no Android `media_metrics` servi
 
 ## Known verification limits
 
-There was no emulator or device. Tests run under Robolectric API 35, with native graphics, while the app compiles and targets stable API 37. Acoustic loop boundaries, simultaneous decoder capacity, OEM power management, actual notification/lockscreen layout, audio focus enforcement and real document-provider grants need the checks in README.md.
+There was no emulator or device. Tests run under Robolectric API 35, with native graphics, while the app compiles and targets stable API 37. Acoustic loop boundaries, simultaneous decoder capacity, OEM power management, actual notification/lockscreen layout, audio focus enforcement and real document-provider grants need the phone checks below.
 
 The pinned AGP 8.13.2 emits an advisory because it was tested through compile SDK 36.1. Compilation, lint, both test variants and assembly pass against SDK 37.0. SDK command-line tool metadata also produces a tooling XML-version advisory. Native dependency symbols were retained when the local strip tool could not strip them; APK assembly succeeded.
+
+### Phone checklist
+
+- Listen across at least two loop boundaries for every recording, then combine all 14 and check volume/headroom.
+- Lock the screen, leave the app, and use play/pause and preset next/previous on the notification, lockscreen and headset.
+- Start playback, enable battery saver, and confirm pause. Disable saver and confirm it stays paused until Play.
+- Interrupt with another media app or a call, and unplug headphones. Confirm the mix pauses.
+- Add a local file and a document-provider file, rename them, restart the app and reboot. Check access and graceful errors if a file disappears.
+- Check theme switching, system bars, landscape, large text, TalkBack slider adjustment and controls.
 
 ## Final Sol review
 
